@@ -1,0 +1,20 @@
+name: LocalStack GitHub Actions Login
+description: Logs in to your LocalStack account in GitHub Actions
+author: 'Harsh Mishra'
+
+branding:
+  icon: 'code'
+  color: 'white'
+
+inputs:
+  email:
+    description: 'Username'
+    required: true
+  password:
+    description: Password
+    required: true
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
+  post: 'dist/index.js'
