@@ -1,0 +1,49 @@
+name: 'Test LocalStack GitHub Actions Login'
+
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    name: 🚧 Build the GitHub Actions
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⚡️ Checkout the repository
+        uses: actions/checkout@v3
+      - name: 🚀 Install dependencies
+        run: |
+          yarn install --pure-lockfile
+      - name: 🎉 Build the project
+        run: |
+          yarn run all
+
+  test:
+    name: 🌐 Test the GitHub Actions
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⚡️ Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: ☁️ Start LocalStack
+        run: |
+          pip install pyopenssl -U
+          docker pull localstack/localstack-pro:1.4
+          pip install localstack
+          DNS_ADDRESS=0 localstack start -d
+          localstack wait -t 30
+          pip install awscli-local[ver1]
+        env:
+          LOCALSTACK_API_KEY: ${{ secrets.LOCALSTACK_API_KEY }}
+
+      - name: 🤔 Login to LocalStack
+        uses: ./
+        with:
+          email: ${{ secrets.LOCALSTACK_USERNAME }}
+          password: ${{ secrets.LOCALSTACK_PASSWORD }}
+
+      - name: 🤩 Pull a Cloud Pod
+        run: |
+          localstack pod load iris-cloud-pod
+          localstack pod list
+          localstack logs
+          localstack wait -t 15
+          awslocal lambda list-functions
