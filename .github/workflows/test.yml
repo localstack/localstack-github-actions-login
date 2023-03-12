@@ -42,8 +42,5 @@ jobs:
 
       - name: 🤩 Pull a Cloud Pod
         run: |
-          localstack pod load iris-cloud-pod
+          localstack pod load reproducible-ml
           localstack pod list
-          localstack logs
-          localstack wait -t 15
-          awslocal lambda list-functions
