@@ -1,11 +1,11 @@
 # LocalStack GitHub Actions Login
 
-[![Test LocalStack GitHub Actions Login](https://github.com/HarshCasper/localstack-github-actions-login/actions/workflows/test.yml/badge.svg)](https://github.com/HarshCasper/localstack-github-actions-login/actions/workflows/test.yml)
-[![tag badge](https://img.shields.io/github/v/tag/HarshCasper/localstack-github-actions-login)](https://github.com/HarshCasper/localstack-github-actions-login/tags)
-[![license badge](https://img.shields.io/github/license/HarshCasper/localstack-github-actions-login)](./LICENSE)
-[![size badge](https://img.shields.io/github/size/HarshCasper/localstack-github-actions-login/dist/index.js)](./dist)
+[![Test LocalStack GitHub Actions Login](https://github.com/localstack/localstack-github-actions-login/actions/workflows/test.yml/badge.svg)](https://github.com/localstack/localstack-github-actions-login/actions/workflows/test.yml)
+[![tag badge](https://img.shields.io/github/v/tag/localstack/localstack-github-actions-login)](https://github.com/localstack/localstack-github-actions-login/tags)
+[![license badge](https://img.shields.io/github/license/localstack/localstack-github-actions-login)](./LICENSE)
+[![size badge](https://img.shields.io/github/size/localstack/localstack-github-actions-login/dist/index.js)](./dist)
 
-A GitHub Action to log-in into your [LocalStack account](https://app.localstack.cloud)  on your GitHub Actions runner workflow by specifying your Email Address and Password. See the  [LocalStack Documentation](https://docs.localstack.cloud/references/localstack-cli-manual/#login)  for an explanation of a log in using  `localstack`CLI, which this action wraps.
+A GitHub Action to log-in into your [LocalStack account](https://app.localstack.cloud) on your GitHub Actions runner workflow by specifying your Email Address and Password. See the [LocalStack Documentation](https://docs.localstack.cloud/references/localstack-cli-manual/#login) for an explanation of a log in using `localstack` CLI, which this action wraps.
 
 ## Usage
 
@@ -13,7 +13,7 @@ To get started, you can use this minimal example:
 
 ```yaml
 - name: 🤔 Login to LocalStack
-  uses: HarshCasper/localstack-github-actions-login@v0.1.0
+  uses: LocalStack/localstack-github-actions-login@v0.1.0
   with:
     email: ${{ secrets.LOCALSTACK_USERNAME }}
     password: ${{ secrets.LOCALSTACK_PASSWORD }}
@@ -55,7 +55,7 @@ jobs:
           LOCALSTACK_API_KEY: ${{ secrets.LOCALSTACK_API_KEY }}
 
       - name: 🤔 Login to LocalStack
-        uses: HarshCasper/localstack-github-actions-login@v0.1.0
+        uses: LocalStack/localstack-github-actions-login@v0.1.0
         with:
           email: ${{ secrets.LOCALSTACK_USERNAME }}
           password: ${{ secrets.LOCALSTACK_PASSWORD }}
