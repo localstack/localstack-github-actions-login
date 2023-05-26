@@ -39,8 +39,3 @@ jobs:
         with:
           email: ${{ secrets.LOCALSTACK_USERNAME }}
           password: ${{ secrets.LOCALSTACK_PASSWORD }}
-
-      - name: 🤩 Pull a Cloud Pod
-        run: |
-          localstack pod load reproducible-ml
-          localstack pod list
